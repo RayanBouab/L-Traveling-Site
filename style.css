@@ -1,0 +1,405 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General Styles */
+body {
+    font-family: 'Lora', serif;
+    background-color:white;
+    color: #333;
+    transition: background-color 0.5s ease;
+    line-height: 1.6;
+}
+
+h2 {
+    color: white;
+}
+
+h3 {
+    margin-bottom: 10px;
+    color:darkslateblue
+}
+
+p {
+    font-size: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.hamburger input {
+    display: none;
+}
+
+/* Ensure SVG fills the container */
+.hamburger svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: #000;
+    stroke-width: 3;
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hamburger icon transition */
+.line {
+    fill: none;
+    stroke: black;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    /* Define the transition for transforming the Stroke */
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+                stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+  
+.line-top-bottom {
+   stroke-dasharray: 12 63;
+}
+
+/* Modification du boutton */
+.hamburger.active svg {
+   transform: rotate(-45deg);
+}
+  
+.hamburger.active svg .line-top-bottom {
+   stroke-dasharray: 20 300;
+   stroke-dashoffset: -32.42;
+}
+
+.hamburger.active .line {
+    stroke-dasharray: 20 300;
+}
+
+/* Menu */
+.menu {
+    position: fixed;
+    margin-left: 2vw;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Pour les petits écrans (smartphones) */
+@media (max-width: 600px) {
+    .menu {
+        left: 75%;
+        width: 50vw;
+        height: 100vh;
+    }
+}
+
+/* Pour les tablettes ou écrans moyens */
+@media (min-width: 600px) and (max-width: 1024px) {
+    .menu {
+        left: 75%;
+        width: 30vw;
+        height: 100vh;
+    }
+}
+
+/* Pour les grands écrans (ordinateurs de bureau) */
+@media (min-width: 1024px) {
+    .menu {
+        left: 87%; 
+        width: 20vw;
+        height: 100vh;
+    }
+}
+
+.hamburger input:checked ~ .menu {
+    display: block;
+    visibility: visible;
+}
+
+.menu.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu a {
+    display: block;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#acceuil, #services, #about, #contact {
+    padding: 3rem;
+    text-align: center;
+    background-color: #fff;
+    margin: 2rem 0;
+}
+
+/* Header style */
+#acceuil{
+    padding: 100px;
+    margin: 0;
+}
+
+header {
+    color:white;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    top: 0;
+    z-index: 10;
+    background-image:url(background.jpg);
+    background-size: cover;      
+    background-position: center; 
+    background-repeat: no-repeat;
+    height: 250px;              
+}
+
+#datetime{
+    position: absolute;
+    text-align: left; 
+    top: 0px;
+    left: 0; 
+    font-size: 1em; 
+    border-style: double; 
+    border-color: white; 
+    border-radius: 10px;
+}
+
+.logo {
+    width: 20%; 
+    height: auto; 
+    max-width: 200px;
+    min-width: 50px;
+    position: absolute; 
+    top: -30px; 
+    margin-top: 60px;
+    left: 50px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* Slider styles */
+#slider {
+    position: relative;
+    overflow: hidden;
+    height: 500px;
+}
+
+.slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.current {
+    opacity: 1;
+}
+
+.slide-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Service Section */
+#services {
+    padding: 50px;
+    text-align: center;
+}
+
+.service {
+    background: #47ffed;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.service-img {
+    width: 100px;
+    height: auto;
+}
+
+/* About Section */
+#about {
+    padding: 50px;
+    background: #f4f4f4;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo2 {
+    width: 15%; 
+    height: auto; 
+    max-width: 200px;
+    min-width: 50px;
+    position: absolute;
+    right: 10px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease;
+}
+
+.logo2:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* Footer */
+#contact {
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.social-media a {
+    color: white;
+    margin: 0 10px;
+}
+
+/* Formulaire */
+section {
+    text-align: center;
+}
+
+.modal {
+    display: flex; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenu du formulaire */
+.formulaire {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+}
+
+/* Style pour les labels et les champs */
+label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+/* Style du bouton d'envoi */
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Style du bouton d'ouverture de la modale */
+#ouvrirModal {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-block;
+}
+
+#ouvrirModal:hover {
+    background-color: #0056b3;
+}
+
+.notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-size: 40px;
+    max-width: 90%;
+    box-sizing: border-box;
+}
+
+
+/* Responsive: Show hamburger icon on smaller screens */
+@media (max-width: 1500px) {
+    .hamburger {
+        display: block;
+    }
+
+    .menu {
+        height: 100vh;
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items:first baseline;
+    }
+}
